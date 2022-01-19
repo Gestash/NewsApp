@@ -45,14 +45,12 @@ fun bindStatus(statusImageView: ImageView, status: NewsApiStatus?) {
 fun bindDate(textView: TextView, publishedAt: String?) {
     val df = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
     df.timeZone = TimeZone.getTimeZone("UTC")
-//    val df = SimpleDateFormat("MMMM dd, yyyy", Locale.getDefault())
     val localDateTime =
         publishedAt?.let {
             df.parse(it)
         }
-//    val localDateTime = publishedAt?.let { df.parse(it) }
 
-    val df2 = SimpleDateFormat("MMMM dd yyyy", Locale.getDefault())
+    val df2 = SimpleDateFormat("MMMM dd yyyy, HH:mm", Locale.getDefault())
 
     textView.text = localDateTime?.let { df2.format(it) }
 
